@@ -32,4 +32,28 @@ public class ProductController : ControllerBase
       return StatusCode(StatusCodes.Status404NotFound, $"Can't find Product with a Product Id of '{id}'.");
     }
   }
+
+  [HttpGet]
+  [Route("ByCategory/{categoryId}")]
+  public ActionResult<IEnumerable<Product>> SearchByCategory(int categoryId)
+  {
+    // TODO : recherche par catégorie à implémenter
+    return StatusCode(StatusCodes.Status200OK);
+  }
+
+  [HttpGet]
+  [Route("ByNameAndPrice/Name/{name}/Price/{price}")]
+  public ActionResult<IEnumerable<Product>> SearchByNameAndPrice(string name, decimal price)
+  {
+    // TODO : recherche par nom et prix à implémenter
+    return StatusCode(StatusCodes.Status200OK);
+  }
+
+  [HttpGet]
+  [Route("ByNameAndPrice")]
+  public ActionResult<IEnumerable<Product>> SearchByNameAndPriceQS(string name, decimal price)
+  {
+    // TODO : recherche par nom et prix à implémenter
+    return StatusCode(StatusCodes.Status200OK);
+  }
 }
