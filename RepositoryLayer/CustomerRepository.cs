@@ -2240,4 +2240,14 @@ public class CustomerRepository
     .OrderBy(row => row.LastName);
   }
 
+  public IEnumerable<Customer> getByFirstAndLastName(string firstName, string lastName){
+
+   IEnumerable<Customer>? customers;
+   return customers = new CustomerRepository().Get()
+        .Where(row => row.FirstName.Contains(firstName, StringComparison.InvariantCultureIgnoreCase) 
+            && row.LastName.Contains(lastName, StringComparison.InvariantCultureIgnoreCase))
+        .OrderBy(row => row.FirstName)
+        .ThenBy(row => row.LastName);
+  }
+
 }

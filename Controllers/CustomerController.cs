@@ -47,11 +47,7 @@ public class CustomerController : ControllerBase
   public ActionResult<IEnumerable<Customer>> SearchByFirstAndLastName(string firstName, string lastName)
   {
     IEnumerable<Customer>? entities;
-    entities = new CustomerRepository().Get()
-        .Where(row => row.FirstName.Contains(firstName, StringComparison.InvariantCultureIgnoreCase) 
-            && row.LastName.Contains(lastName, StringComparison.InvariantCultureIgnoreCase))
-        .OrderBy(row => row.FirstName)
-        .ThenBy(row => row.LastName);
+    entities = new CustomerRepository().getByFirstAndLastName(firstName,lastName);
     return StatusCode(StatusCodes.Status200OK, entities);
   }
 

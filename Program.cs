@@ -1,6 +1,12 @@
+using DotNetWebApiSupport.EntityLayer;
+
 System.Globalization.CultureInfo.DefaultThreadCurrentCulture = new System.Globalization.CultureInfo("en-US");
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Dependency Injection
+
+builder.Services.AddSingleton<Settings , Settings>();
 
 // Add services to the container.
 

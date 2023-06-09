@@ -8,6 +8,12 @@ namespace DotNetWebApiSupport.Controllers;
 [ApiController]
 public class ProductController : ControllerBase
 {
+  private Settings _settings;
+  public ProductController(Settings settings)
+  {
+    _settings = settings;
+  }
+
   [HttpGet]
   public ActionResult<List<Product>> Get()
   {
