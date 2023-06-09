@@ -1,5 +1,6 @@
 using DotNetWebApiSupport.EntityLayer;
 using DotNetWebApiSupport.RepositoryLayer;
+using DotNetWebApiSupport.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DotNetWebApiSupport.Controllers;
@@ -9,16 +10,18 @@ namespace DotNetWebApiSupport.Controllers;
 public class ProductController : ControllerBase
 {
   private Settings _settings;
-  public ProductController(Settings settings)
+  private IRepository<Product> _repo;
+  public ProductController(Settings settings, IRepository<Product> repository)
   {
     _settings = settings;
+    _repo = repository;
   }
 
   [HttpGet]
   public ActionResult<List<Product>> Get()
   {
     List<Product> list;
-    list = new ProductRepository().Get();
+    list = _repo.Get();
     return StatusCode(StatusCodes.Status200OK, list);
   }
 
