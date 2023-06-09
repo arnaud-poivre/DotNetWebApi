@@ -9,11 +9,10 @@ namespace DotNetWebApiSupport.Controllers;
 [ApiController]
 public class ProductController : ControllerBase
 {
-  private Settings _settings;
   private IRepository<Product> _repo;
-  public ProductController(Settings settings, IRepository<Product> repository)
+  public ProductController(IRepository<Product> repository)
   {
-    _settings = settings;
+    
     _repo = repository;
   }
 

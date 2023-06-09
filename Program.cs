@@ -7,8 +7,7 @@ System.Globalization.CultureInfo.DefaultThreadCurrentCulture = new System.Global
 var builder = WebApplication.CreateBuilder(args);
 
 // Dependency Injection
-
-builder.Services.AddSingleton<Settings , Settings>();
+builder.Services.AddScoped<IRepositoryCustomer<Customer>, CustomerRepository>();
 builder.Services.AddScoped<IRepository<Product>, ProductRepository>();
 
 // Add services to the container.

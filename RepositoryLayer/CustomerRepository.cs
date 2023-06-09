@@ -1,11 +1,12 @@
 using DotNetWebApiSupport.EntityLayer;
+using DotNetWebApiSupport.Interfaces;
 
 namespace DotNetWebApiSupport.RepositoryLayer;
 
 /// <summary>
 /// This class creates some fake data for the Customer table.
 /// </summary>
-public class CustomerRepository
+public class CustomerRepository : IRepositoryCustomer<Customer>
 {
   #region Get Method
   /// <summary>
@@ -2232,7 +2233,7 @@ public class CustomerRepository
   }
   #endregion
 
-  public IEnumerable<Customer> getByTitle(string title)
+  public IEnumerable<Customer> GetByTitle(string title)
   {
     IEnumerable<Customer> customers;
     return customers = Get()
@@ -2240,7 +2241,7 @@ public class CustomerRepository
     .OrderBy(row => row.LastName);
   }
 
-  public IEnumerable<Customer> getByFirstAndLastName(string firstName, string lastName){
+  public IEnumerable<Customer> GetByFirstAndLastName(string firstName, string lastName){
 
    IEnumerable<Customer>? customers;
    return customers = new CustomerRepository().Get()

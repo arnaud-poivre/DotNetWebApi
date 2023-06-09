@@ -1,4 +1,5 @@
 using DotNetWebApiSupport.EntityLayer;
+using DotNetWebApiSupport.Interfaces;
 using DotNetWebApiSupport.RepositoryLayer;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,11 +9,16 @@ namespace DotNetWebApiSupport.Controllers;
 [ApiController]
 public class CustomerController : ControllerBase
 {
+  private IRepository<Customer> _repo;
+
+  public CustomerController(IRepositoryCustomer<Customer> repository){
+    _repo = repository;
+  }
   [HttpGet]
   public ActionResult<List<Customer>> Get()
   {
     List<Customer> list;
-    list = new CustomerRepository().Get();
+    list = _repo.Get();
     return StatusCode(StatusCodes.Status200OK, list);
   }
 
@@ -38,7 +44,7 @@ public class CustomerController : ControllerBase
   public ActionResult<IEnumerable<Customer>> SearchByTitle(string title)
   {
     IEnumerable<Customer>? entities;
-    entities = new CustomerRepository().getByTitle(title);
+    entities = new CustomerRepository().GetByTitle(title);
     return StatusCode(StatusCodes.Status200OK, entities);
   }
 
@@ -47,7 +53,7 @@ public class CustomerController : ControllerBase
   public ActionResult<IEnumerable<Customer>> SearchByFirstAndLastName(string firstName, string lastName)
   {
     IEnumerable<Customer>? entities;
-    entities = new CustomerRepository().getByFirstAndLastName(firstName,lastName);
+    entities = new CustomerRepository().GetByFirstAndLastName(firstName,lastName);
     return StatusCode(StatusCodes.Status200OK, entities);
   }
 
