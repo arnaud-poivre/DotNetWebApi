@@ -11,7 +11,7 @@ public class CustomerController : ControllerBase
 {
   private IRepository<Customer> _repo;
 
-  public CustomerController(IRepositoryCustomer<Customer> repository){
+  public CustomerController(IRepository<Customer> repository){
     _repo = repository;
   }
   [HttpGet]

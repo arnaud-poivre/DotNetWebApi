@@ -6,7 +6,7 @@ namespace DotNetWebApiSupport.RepositoryLayer;
 /// <summary>
 /// This class creates some fake data for the Customer table.
 /// </summary>
-public class CustomerRepository : IRepositoryCustomer<Customer>
+public class CustomerRepository : IRepositoryCustomer<Customer> , IRepository<Customer>
 {
   #region Get Method
   /// <summary>
